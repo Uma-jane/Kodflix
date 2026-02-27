@@ -6,17 +6,7 @@ import FeaturedMovie from './components/FeaturedMovie';
 import { fetchMovies, hasApiKey } from './api/tmdb';
 
 function App() {
-  if (!hasApiKey) {
-    return (
-      <div className="app">
-        <Header />
-        <div className="error" style={{ padding: '1rem', color: 'red' }}>
-          TMDB API key is missing. Define <code>REACT_APP_TMDB_API_KEY</code> in
-          your environment and rebuild the app.
-        </div>
-      </div>
-    );
-  }
+  // hooks must be called unconditionally at the top level
   const [popular, setPopular] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
@@ -44,6 +34,18 @@ function App() {
     }
     loadAll();
   }, []);
+
+  if (!hasApiKey) {
+    return (
+      <div className="app">
+        <Header />
+        <div className="error" style={{ padding: '1rem', color: 'red' }}>
+          TMDB API key is missing. Define <code>REACT_APP_TMDB_API_KEY</code> in
+          your environment and rebuild the app.
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="app">
