@@ -29,6 +29,16 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+### Environment Variables
+
+This app requires a TMDB API key. Create a `.env` file at the project root and add:
+
+```
+REACT_APP_TMDB_API_KEY=your_key_here
+```
+
+(See `.env.example` for reference.)
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**

@@ -1,0 +1,61 @@
+/* featured movie banner */
+.featured {
+  color: #fff;
+  height: 60vh;
+  position: relative;
+}
+
+.featured-contents {
+  padding: 60px 30px 0 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.featured-title {
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+.featured-buttons {
+  margin-top: 20px;
+}
+
+.featured-button {
+  cursor: pointer;
+  color: #fff;
+  outline: none;
+  border: none;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 0.5rem 2rem;
+  margin-right: 1rem;
+  background-color: rgba(51, 51, 51, 0.5);
+}
+
+.featured-button:hover {
+  color: #000;
+  background-color: #e6e6e6;
+  transition: all 0.2s;
+}
+
+.featured-description {
+  width: 45rem;
+  line-height: 1.3;
+  padding-top: 1rem;
+  max-width: 360px;
+}
+
+.featured-fadeBottom {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+}
