@@ -3,13 +3,25 @@ import './App.css';
 import Header from './components/Header';
 import Row from './components/Row';
 import FeaturedMovie from './components/FeaturedMovie';
-import { fetchMovies } from './api/tmdb';
+import { fetchMovies, hasApiKey } from './api/tmdb';
 
 function App() {
+  if (!hasApiKey) {
+    return (
+      <div className="app">
+        <Header />
+        <div className="error" style={{ padding: '1rem', color: 'red' }}>
+          TMDB API key is missing. Define <code>REACT_APP_TMDB_API_KEY</code> in
+          your environment and rebuild the app.
+        </div>
+      </div>
+    );
+  }
   const [popular, setPopular] = useState([]);
   const [topRated, setTopRated] = useState([]);
   const [upcoming, setUpcoming] = useState([]);
   const [featured, setFeatured] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function loadAll() {
@@ -27,6 +39,7 @@ function App() {
         setFeatured(random);
       } catch (err) {
         console.error('Error fetching movies', err);
+        setError("Failed to load movies. See console.");
       }
     }
     loadAll();
@@ -35,6 +48,7 @@ function App() {
   return (
     <div className="app">
       <Header />
+      {error && <div className="error">{error}</div>}
       <main>
         <FeaturedMovie movie={featured} />
         <Row title="Popular" movies={popular} />
